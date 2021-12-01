@@ -21,17 +21,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater, null)
         binding.lifecycleOwner = this
 
+        insertBike()
+
         setContentView(binding.root)
     }
 
-    override fun onStop() {
-        viewModel.deleteAllBikes()
-        super.onStop()
-    }
 
-    override fun onResume() {
-        super.onResume()
-        insertBike()
+    override fun onDestroy() {
+        viewModel.deleteAllBikes()
+        super.onDestroy()
     }
 
     private fun insertBike() {

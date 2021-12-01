@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
                 android:textSize="25dp"
+                android:text="@string/currency_string"
                 app:layout_constraintBottom_toBottomOf="@+id/sumPrice"
                 app:layout_constraintStart_toEndOf="@id/sumPrice"
                 app:layout_constraintTop_toTopOf="@+id/sumPrice"
