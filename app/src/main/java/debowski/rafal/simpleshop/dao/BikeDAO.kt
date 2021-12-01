@@ -12,8 +12,11 @@ import io.reactivex.Single
 interface BikeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBike(bike : BikeEntity) : Completable
+    fun insertBikeList(bike: List<BikeEntity>): Completable
 
     @Query("SELECT * FROM Bike")
-    fun getAllBikes() : Single<List<BikeEntity>>
+    fun getAllBikes(): Single<List<BikeEntity>>
+
+    @Query("DELETE  FROM Bike")
+    fun deleteAllBikes(): Completable
 }

@@ -21,8 +21,8 @@ fun BikeDomain.toBikeEntity(): BikeEntity =
         brand = this.brand
     )
 
-fun List<BikeEntity>.toBikeDomainList() : List<BikeDomain> =
+fun List<BikeEntity>.toBikeDomainList(): List<BikeDomain> =
     this.map { it.toBikeDomain() }
 
-fun List<BikeEntity>.toBikeEntityList() : List<BikeDomain> =
+fun List<BikeEntity>.toBikeEntityList(): List<BikeDomain> =
     this.map { it.toBikeDomain() }

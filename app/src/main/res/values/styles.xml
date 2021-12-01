@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="buttonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/increase_button</item>
+        <item name="android:textAlignment">center</item>
+        <item name="colorButtonNormal">@color/green_button_increase_color</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">+</item>
+    </style>
+</resources>

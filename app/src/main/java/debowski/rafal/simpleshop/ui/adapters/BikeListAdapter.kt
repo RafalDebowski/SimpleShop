@@ -6,15 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 import debowski.rafal.simpleshop.databinding.ItemBikeListBinding
 import debowski.rafal.simpleshop.domain.BikeDomain
+import debowski.rafal.simpleshop.domain.ShoppingCartDomain
 
-class BikeListAdapter() : RecyclerView.Adapter<BikeListAdapter.BikeViewHolder>() {
+class BikeListAdapter(
+    val onItemClick: (item: BikeDomain) -> Unit
+) : RecyclerView.Adapter<BikeListAdapter.BikeViewHolder>() {
 
     var listItem: List<BikeDomain> = listOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-    private var quantity: Int = 0
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): BikeViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
@@ -37,29 +39,12 @@ class BikeListAdapter() : RecyclerView.Adapter<BikeListAdapter.BikeViewHolder>()
         fun bind(item: BikeDomain) {
 
             binding.name.text = item.name
-            binding.quantity.text = "1"
+            binding.brand.text = item.brand
+            binding.color.text = item.color
 
             binding.buttonIncrease.setOnClickListener {
-                increaseQuantity()
+                onItemClick(item)
             }
-
-            binding.buttonDecrease.setOnClickListener {
-                decreaseQuantity()
-            }
-        }
-
-        private fun increaseQuantity() {
-            quantity += 1
-            binding.quantity.text = quantity.toString()
-            notifyItemChanged(adapterPosition)
-        }
-
-        private fun decreaseQuantity() {
-            if (quantity > 0){
-                quantity -= 1
-            }
-            binding.quantity.text = quantity.toString()
-            notifyItemChanged(adapterPosition)
         }
     }
 

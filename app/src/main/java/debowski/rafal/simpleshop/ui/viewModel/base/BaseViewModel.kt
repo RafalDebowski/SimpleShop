@@ -8,7 +8,7 @@ abstract class BaseViewModel : ViewModel() {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    protected fun addDisposable(disposable: Disposable){
+    protected fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
     }
 

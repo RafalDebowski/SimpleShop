@@ -6,7 +6,7 @@ import debowski.rafal.simpleshop.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val DATABASE_NAME = "MY_DATABASE"
     }
 
@@ -21,12 +21,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater, null)
         binding.lifecycleOwner = this
 
-        insertBike()
-
         setContentView(binding.root)
     }
 
-    private fun insertBike(){
-        viewModel.insertBike()
+    override fun onStop() {
+        viewModel.deleteAllBikes()
+        super.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        insertBike()
+    }
+
+    private fun insertBike() {
+        viewModel.insertBikeList()
     }
 }
