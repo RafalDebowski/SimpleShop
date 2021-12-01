@@ -1,30 +1,32 @@
-package debowski.rafal.simpleshop
+package debowski.rafal.simpleshop.ui.viewModel.bikeList
 
 import android.content.Context
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import debowski.rafal.simpleshop.domain.BikeDomain
 import debowski.rafal.simpleshop.repository.BikeRepository
 import debowski.rafal.simpleshop.ui.viewModel.base.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MainViewModel(applicationContext: Context) : BaseViewModel() {
+class BikeListViewModel(applicationContext: Context) : BaseViewModel() {
 
     private val bikeRepository by lazy {
         BikeRepository(applicationContext)
     }
 
-    fun insertBike() {
+    var bikeList = MutableLiveData<List<BikeDomain>>()
+
+    fun getAllBikes() {
         val disposable = bikeRepository
-            .insertBikeDao(
-                BikeDomain(
-                name = "BIKE",
-                price = 1999,
-                color = "WHITE",
-                brand = "ZIPP"
-            )
-        ).subscribeOn(Schedulers.io())
+            .getAllBikes()
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+            .subscribe({
+                bikeList.value = it.toMutableList()
+            }, {
+                Log.e("ERROR", it.message.toString())
+            })
 
         addDisposable(disposable)
     }

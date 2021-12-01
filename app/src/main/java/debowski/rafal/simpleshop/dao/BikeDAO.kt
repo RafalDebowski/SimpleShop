@@ -13,4 +13,7 @@ interface BikeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertBike(bike : BikeEntity) : Completable
+
+    @Query("SELECT * FROM Bike")
+    fun getAllBikes() : Single<List<BikeEntity>>
 }

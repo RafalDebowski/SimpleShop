@@ -20,3 +20,9 @@ fun BikeDomain.toBikeEntity(): BikeEntity =
         color = this.color,
         brand = this.brand
     )
+
+fun List<BikeEntity>.toBikeDomainList() : List<BikeDomain> =
+    this.map { it.toBikeDomain() }
+
+fun List<BikeEntity>.toBikeEntityList() : List<BikeDomain> =
+    this.map { it.toBikeDomain() }

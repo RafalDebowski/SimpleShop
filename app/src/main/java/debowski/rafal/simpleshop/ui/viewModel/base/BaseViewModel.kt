@@ -1,4 +1,4 @@
-package debowski.rafal.simpleshop.ui.base
+package debowski.rafal.simpleshop.ui.viewModel.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

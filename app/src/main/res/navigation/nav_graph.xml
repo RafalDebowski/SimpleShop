@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/bikeListFragment">
+
+    <fragment
+        android:id="@+id/bikeListFragment"
+        android:name="debowski.rafal.simpleshop.ui.fragments.BikeListFragment"
+        android:label="BikeListFragment" >
+        <action
+            android:id="@+id/action_bikeListFragment_to_shopingCartFragment"
+            app:destination="@id/shopingCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopingCartFragment"
+        android:name="debowski.rafal.simpleshop.ui.fragments.ShopingCartFragment"
+        android:label="ShopingCartFragment" >
+        <action
+            android:id="@+id/action_shopingCartFragment_to_bikeListFragment"
+            app:destination="@id/bikeListFragment" />
+    </fragment>
+</navigation>
